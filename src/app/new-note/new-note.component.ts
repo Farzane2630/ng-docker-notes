@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { noteType } from '../types';
+import { NotesServices } from '../services.notes';
 
 @Component({
   selector: 'app-new-note',
@@ -33,10 +34,17 @@ export class NewNoteComponent {
     this.closeEvent.emit();
   }
 
+  constructor(private noteServices: NotesServices) {}
+
   handleSubmit() {
     this.newNote.title = this.newNoteForm.value.title;
     this.newNote.content = this.newNoteForm.value.content;
-    this.newNote.content = this.newNoteForm.value.content;
+    this.newNote.category = this.newNoteForm.value.category;
+
+    this.noteServices
+      .createNewNote(this.newNote)
+      .subscribe((res) => console.log(res));
+      this.onClose()
     console.log(this.newNote);
   }
 }

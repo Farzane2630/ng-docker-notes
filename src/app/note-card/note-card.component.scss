@@ -40,7 +40,7 @@
   .content {
     @include mixin.txt(14px, _, rgb(6, 10, 20), left);
     max-height: 120px;
-    overflow: scroll;
+    // overflow: scroll;
   }
 }
 

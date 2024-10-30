@@ -36,15 +36,11 @@ textarea {
 }
 
 button {
+  @include mixin.txt(24px, 600, white, center);
   width: calc(100% - 68px);
   height: 48px;
   border-radius: 12px;
   margin: 24px auto;
   background-color: rgb(39, 133, 133);
   cursor: pointer;
-
-  // a {
-  //   @include mixin.txt(24px, 600, white, center);
-  //   text-decoration: none;
-  // }
 }
