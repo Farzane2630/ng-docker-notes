@@ -7,7 +7,7 @@ export interface noteType {
 }
 
 export interface LoginFormType {
-  // id: number | undefined | null;
+  id?: number | undefined | null;
   name: string | undefined | null;
   email: string | undefined | null;
   password: string | undefined | null;
