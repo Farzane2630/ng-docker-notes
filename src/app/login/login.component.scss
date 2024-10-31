@@ -2,7 +2,7 @@
 
 section {
   @extend .main;
-  align-items: flex-end !important;
+  align-items: center !important;
   background-color: white;
   border-radius: 12px;
   border: darkcyan 3px dashed;
@@ -40,11 +40,12 @@ button {
   height: 48px;
   border-radius: 12px;
   margin: 24px auto;
-  background-color: rgb(39, 133, 133);
+  background-color: #278585;
+  @include mixin.txt(24px, 600, white, center);
   cursor: pointer;
+}
 
-  // a {
-  //   @include mixin.txt(24px, 600, white, center);
-  //   text-decoration: none;
-  // }
+a {
+  color: #278585;
+  text-decoration: none;
 }
