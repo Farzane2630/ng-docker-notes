@@ -50,7 +50,7 @@ export class HomePageComponent implements OnInit {
 
     if (targetNote) {
       this.NotesServices.updateNote(id, targetNote).subscribe((res) =>
-        console.log(res)
+        alert(res.message)
       );
 
       this.closeEditModal();

@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { RouterLink, RouterOutlet, Router } from '@angular/router';
 import { LoginFormType } from '../types';
+import { UserServices } from '../services.user';
 
 @Component({
   selector: 'app-login',
@@ -24,24 +25,24 @@ export class LoginComponent {
   loginFormValue: LoginFormType = {
     email: '',
     password: '',
-    name: ""
   };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private userServices: UserServices) {}
 
   handleSubmit() {
-    if (this.loginForm.valid) {
-      this.loginFormValue = {
-        email: this.loginForm.value.email,
-        password: this.loginForm.value.password,
-        name: this.loginForm.value.email,
-      };
+    this.loginFormValue = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password,
+    };
 
-      console.log(this.loginFormValue);
-
-      this.router.navigate(['/home-page']);
-    }
-
-    console.log('Form is not correctly filled! ');
+    this.userServices.loginUser(this.loginFormValue).subscribe({
+      next: (res) => {
+        alert(`welcome back ${res.user.name}!`);
+        this.router.navigate(['/home-page']);
+      },
+      error: (err) => {
+        alert(err.error.message || 'Login Failed');
+      },
+    });
   }
 }

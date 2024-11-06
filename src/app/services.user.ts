@@ -7,11 +7,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserServices {
-  private ApiUrl = 'http://127.0.0.1:8080/users';
+  private ApiUrl = 'http://127.0.0.1:8080';
 
   constructor(private http: HttpClient) {}
 
-  signupUser(userInfo: LoginFormType) {
-    return this.http.post(this.ApiUrl, userInfo);
+  signupUser(userInfo: LoginFormType): Observable<any> {
+    return this.http.post(`${this.ApiUrl}/users`, userInfo);
+  }
+  loginUser(userInfo: LoginFormType): Observable<any> {
+    return this.http.post(`${this.ApiUrl}/login`, userInfo);
   }
 }

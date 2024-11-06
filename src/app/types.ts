@@ -6,9 +6,13 @@ export interface noteType {
   created_at?: string | undefined | null;
 }
 
-export interface LoginFormType {
+export interface SignupFormType {
   id?: number | undefined | null;
   name: string | undefined | null;
+  email: string | undefined | null;
+  password: string | undefined | null;
+}
+export interface LoginFormType {
   email: string | undefined | null;
   password: string | undefined | null;
 }

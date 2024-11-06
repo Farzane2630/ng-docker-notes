@@ -19,15 +19,28 @@ export class EditNoteComponent {
   @Input() noteId!: number;
   @Input() note!: noteType;
 
-  editNoteForm = new FormGroup({
-    title: new FormControl('', Validators.required),
-    content: new FormControl('', Validators.required),
-    category: new FormControl('', Validators.required),
-  });
+  editNoteForm: FormGroup;
+
+  constructor() {
+    this.editNoteForm = new FormGroup({
+      title: new FormControl(this.note?.title || '', Validators.required),
+      content: new FormControl(this.note?.content || '', Validators.required),
+      category: new FormControl(this.note?.category || '', Validators.required),
+    });
+  }
 
   @Output() closeEvent = new EventEmitter<any>();
   @Output() editEvent = new EventEmitter<any>();
 
+  ngOnChanges() {
+    if (this.note) {
+      this.editNoteForm.patchValue({
+        title: this.note.title,
+        content: this.note.content,
+        category: this.note.category,
+      });
+    }
+  }
   onClose() {
     this.closeEvent.emit();
   }

@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterOutlet } from '@angular/router';
-import { LoginFormType } from '../types';
+import { SignupFormType } from '../types';
 import { UserServices } from '../services.user';
 
 @Component({
@@ -27,7 +27,7 @@ export class SignupComponent {
     ]),
   });
 
-  newUser: LoginFormType = {
+  newUser: SignupFormType = {
     name: '',
     email: '',
     password: '',
